@@ -12,5 +12,16 @@ class UserStats extends Model
      *
      * @var string
      */
-    protected $table = 'user_table';
+    protected $table = 'user_stats';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id', 'created_at', 'onboarding_percentage',
+    ];
+
+    public $timestamps = false;
 }

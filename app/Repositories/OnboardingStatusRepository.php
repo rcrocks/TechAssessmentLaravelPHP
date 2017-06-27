@@ -52,88 +52,88 @@ class OnboardingStatusRepository implements OnboardingStatusRepositoryInterface
         IFNULL(q8.approval, 0) AS approval
         FROM (
         
-            SELECT WEEK(created_at) AS weeknumber,
+            SELECT WEEK(created_at, 1) AS weeknumber,
             created_at AS week_start_date
-            FROM user_table
+            FROM user_stats
             GROUP BY weeknumber
         
         ) as q0
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as create_account
-            FROM user_table
-            WHERE onboarding_perentage = " . CREATE_ACCOUNT_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['create_account'] ."
             GROUP BY weeknumber
         
         ) as q1
         ON q0.weeknumber = q1.weeknumber
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as activate_account
-            FROM user_table otherthing
-            WHERE onboarding_perentage = " . ACTIVATE_ACCOUNT_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['activate_account'] ."
             GROUP BY weeknumber
         
         ) as q2
         ON q0.weeknumber = q2.weeknumber
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as profile_information
-            FROM user_table
-            WHERE onboarding_perentage = " . PROFILE_INFORMATION_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['profile_information'] ."
             GROUP BY weeknumber
         
         ) as q3
         ON q0.weeknumber = q3.weeknumber
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as jobs_interested
-            FROM user_table
-            WHERE onboarding_perentage = " . JOBS_INTERESTED_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['jobs_interested'] ."
             GROUP BY weeknumber
         
         ) as q4
         ON q0.weeknumber = q4.weeknumber
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as experience
-            FROM user_table
-            WHERE onboarding_perentage = " . EXPERINCE_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['experience'] ."
             GROUP BY weeknumber
         
         ) as q5
         ON q0.weeknumber = q5.weeknumber
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as freelancer
-            FROM user_table
-            WHERE onboarding_perentage = " . FREELANCER_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['freelancer'] ."
             GROUP BY weeknumber
         
         ) as q6
         ON q0.weeknumber = q6.weeknumber
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as approval_waiting
-            FROM user_table
-            WHERE onboarding_perentage = " . APPROVAL_WAITING_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['approval_waiting'] ."
             GROUP BY weeknumber
         
         ) as q7
         ON q0.weeknumber = q7.weeknumber
         LEFT JOIN (
         
-            SELECT WEEK(created_at) weeknumber,
+            SELECT WEEK(created_at, 1) weeknumber,
             COUNT(user_id) as approval
-            FROM user_table
-            WHERE onboarding_perentage = " . APPROVAL_ONBOARDING_PERCENTAGE ."
+            FROM user_stats
+            WHERE onboarding_percentage = " . config('onboarding-steps')['approval'] ."
             GROUP BY weeknumber
         
         ) as q8

@@ -19,22 +19,22 @@
                     axios.get('/chartdata')
                         .then(function (response) {
 
-                            if (typeof response.data[0] != 'undefined') {
+                            if (typeof response.data != 'undefined') {
 
                                 //prepping data
                                 var dataForSeries = [];
-                                for (var i in response.data[0]) {
+                                for (var i in response.data) {
                                     obj = new Object();
-                                    obj.name = response.data[0][i].week_start_date;
+                                    obj.name = response.data[i].week_start_date;
                                     obj.data = [
-                                        Number(response.data[0][i].cohort_size),
-                                        response.data[0][i].activate_account,
-                                        response.data[0][i].profile_information,
-                                        response.data[0][i].jobs_interested,
-                                        response.data[0][i].experience,
-                                        response.data[0][i].freelancer,
-                                        response.data[0][i].freelancer,
-                                        response.data[0][i].approval
+                                        Number(response.data[i].cohort_size),
+                                        response.data[i].activate_account,
+                                        response.data[i].profile_information,
+                                        response.data[i].jobs_interested,
+                                        response.data[i].experience,
+                                        response.data[i].freelancer,
+                                        response.data[i].freelancer,
+                                        response.data[i].approval
                                     ];
 
                                     dataForSeries.push(obj);
@@ -50,7 +50,7 @@
                                                 type: 'spline'
                                             },
                                             title: {
-                                                text: 'User Retention'
+                                                text: 'Retention curve chart'
                                             },
                                             xAxis: {
                                                 categories: [

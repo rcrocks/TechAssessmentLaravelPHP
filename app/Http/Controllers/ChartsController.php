@@ -33,9 +33,9 @@ class ChartsController extends Controller {
      */
     public function getData()
     {
-        return response()->json([
+        return response()->json(
             $this->onBoardRepo->getWeeklyData()
-        ]);
+        );
     }
 
 }
