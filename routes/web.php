@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'ChartsController@getView');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/chartdata', 'ChartsController@getData');
