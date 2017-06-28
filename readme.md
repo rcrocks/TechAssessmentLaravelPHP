@@ -31,4 +31,4 @@ It uses port 8000 by default. If port 8000 is not available, you can specify a c
 
 ## Running the Tests
 
-Fire up a terminal, navigate to the project root and issue **phpunit** .
+Fire up a terminal, navigate to the project root and run **phpunit** .
