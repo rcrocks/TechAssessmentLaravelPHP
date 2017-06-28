@@ -1,4 +1,5 @@
 ## Requirements
+
 This application based on Laravel 5.4. [see the requirements](https://laravel.com/docs/5.4#server-requirements)
 In addition to that this application use MySQL as database (developed on MariaDB 10.1).
 To run the tests you have to make sure PHPUnit is configured correctly on your machine.
@@ -24,7 +25,9 @@ Also you need to have a working internet connection because this application use
 ## Running the Application
 
 Fire up a terminal, navigate to the project root and issue **php artisan serve** .
-Now you can view the retention curve chart by visiting The [localhost](http://localhost:8000/)
+Now you can view the retention curve chart by visiting The [localhost](http://localhost:8000/) 
+It uses port 8000 by default. If port 8000 is not available, you can specify a custom port with
+**php artisan serve --port=5000**
 
 ## Running the Tests
 
