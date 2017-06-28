@@ -1,5 +1,14 @@
 <?php
 
+/*
+    |--------------------------------------------------------------------------
+    | On-boarding percentages
+    |--------------------------------------------------------------------------
+    |
+    | Here you define the percentage for each On-boarding step. Define them like
+    | this helps to override them in testing environment.
+    |
+    */
 return [
 
     'create_account'    =>  env('CREATE_ACCOUNT_ONBOARDING_PERCENTAGE', 0),

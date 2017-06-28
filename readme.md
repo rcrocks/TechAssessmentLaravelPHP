@@ -2,6 +2,8 @@
 This application based on Laravel 5.4. [see the requirements](https://laravel.com/docs/5.4#server-requirements)
 In addition to that this application use MySQL as database (developed on MariaDB 10.1).
 To run the tests you have to make sure PHPUnit is configured correctly on your machine.
+Also you need to have a working internet connection because this application uses CDN to pull some javascript libraries.
+( Of course who doesn't have internet connection these days. Even cats have it ! )
 
 
 ## Setup Instructions
